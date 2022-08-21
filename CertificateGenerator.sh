@@ -23,6 +23,17 @@
 # */
 #
 #########################################################
+#
+# 	Firstly script generates a CA Key.
+#	Then it starts to generating server Key.
+#	Then Signs the server key with CA key.
+#
+#	You should run the script in
+#	/path/for/apache/conf
+#	directory
+#
+#
+
 
 echo "Generating essential directories..."
 mkdir -p CA
