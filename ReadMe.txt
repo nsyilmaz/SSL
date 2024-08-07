@@ -25,15 +25,24 @@ openssl x509 -outform der -in mycert.crt -out mycert.der
 #######################################
 # Importing the CERT exported from BURP
 #
+
+# Burp exports the cert in der format.
+
+# First convert it to pem format
 openssl x509 -inform der -in ca.der -out ca.pem
+
+# Then get the subject hash 
 openssl x509 -inform PEM -subject_hash_old -in ca.pem | head -1
+# the output will be a 8-char alpha numeric series like -> a58355c2
 
-
+# We need to make a copy of the pem file named with this string.
 cp ca.pem a58355c2.0
+
+# Then also export text and put into the new file.
 openssl x509 -inform PEM -text -in ca.pem -out /dev/null>> a58355c2.0
 
 
-
+# Then we need to put this special named cert file to android device.
 adb push a58355c2.0 /data/local/tmp
 adb shell
 
