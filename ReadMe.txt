@@ -28,7 +28,7 @@ openssl x509 -inform PEM -text -in CA.pem -out CA.txt
 
 
 ###################---BURP---####################
-# Create CA Key and CERT 
+# Create your own CA Key and CERT for Burp Suite
 # Create CA Certificate in DER format
 openssl req -x509 -days 730 -nodes -newkey rsa:2048 -outform der -keyout CA.key -out CA.der -extensions v3_ca -config openssl.cnf
 
